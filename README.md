@@ -8,6 +8,12 @@ A reinforcement learning-based Forex trading agent built with Stable-Baselines3 
 ## ✨ Features
 
 - 🤖 **RL-Powered Trading**: Uses PPO algorithm from Stable-Baselines3
+- 🌐 **Web Dashboard**: Real-time monitoring with Flask-based dashboard
+  - Live training progress and metrics
+  - Interactive equity curves
+  - Position tracking and PnL
+  - Trade history and statistics
+  - Auto-refreshing interface
 - 📊 **Custom Gym Environment**: Realistic Forex trading simulation with:
   - Position persistence (long/short/flat)
   - Configurable stop-loss and take-profit levels
@@ -18,6 +24,7 @@ A reinforcement learning-based Forex trading agent built with Stable-Baselines3 
 - 🔄 **Train/Test Split**: Proper time-series validation with in-sample/out-of-sample evaluation
 - 💾 **Model Checkpointing**: Automatic model saving and best model selection
 - 📉 **Equity Curve Visualization**: Track agent performance over time
+- 🔴 **Live Trading Support**: Framework for real-time trading (experimental)
 
 ## 🛠️ Installation
 
@@ -44,7 +51,30 @@ pip install -r requirements.txt
 
 ## 🚀 Usage
 
-### Training an Agent
+### Quick Start with Dashboard (Recommended)
+
+The easiest way to train and monitor your agent is using the main.py script with integrated web dashboard:
+
+```bash
+python main.py
+```
+
+This will:
+- **Automatically start a web dashboard** on http://localhost:5000
+- Open the dashboard in your browser
+- Begin training with real-time monitoring
+- Display live metrics including:
+  - Training progress and timesteps
+  - Real-time equity curve
+  - Current positions and PnL
+  - Trade history and statistics
+  - System logs
+
+The dashboard updates every 2 seconds and provides a comprehensive view of your training session.
+
+### Training Without Dashboard
+
+For traditional command-line training:
 
 ```bash
 python train_agent.py
@@ -71,15 +101,39 @@ This will:
 - Save trade history to `trade_history_output.csv`
 - Display the equity curve
 
+### Live Trading (Experimental)
+
+For live trading with a trained model:
+
+```python
+from live_trading import start_live_trading
+
+# Start live trading session
+session = start_live_trading(
+    model_path="model_eurusd_best",
+    initial_balance=10000.0
+)
+
+# Session runs in background with dashboard updates
+# Stop with: session.stop()
+```
+
+**Note**: Live trading is experimental and requires integration with a live data feed.
+
 ## 📁 Project Structure
 
 ```
 Fopper/
-├── train_agent.py          # Main training script
+├── main.py                 # 🆕 Main entry point with integrated dashboard
+├── train_agent.py          # Traditional training script
 ├── test_agent.py           # Model evaluation script
 ├── trading_env.py          # Custom Gymnasium trading environment
 ├── indicators.py           # Technical indicator preprocessing
+├── dashboard.py            # 🆕 Web dashboard backend (Flask)
+├── live_trading.py         # 🆕 Live trading functionality
 ├── requirements.txt        # Python dependencies
+├── templates/              # 🆕 Dashboard HTML templates
+│   └── dashboard.html      # Main dashboard interface
 ├── data/                   # Historical EURUSD data (CSV files)
 ├── checkpoints/            # Model checkpoints (auto-generated)
 ├── tensorboard_log/        # TensorBoard logs (auto-generated)
