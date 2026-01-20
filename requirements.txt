@@ -1,14 +1,14 @@
 # Core ML/RL Framework
-stable-baselines3==2.5.0
-torch==2.6.0
+stable-baselines3>=2.5.0
+torch>=2.6.0
 
 # Data Processing & Technical Analysis
-pandas==2.2.3
-pandas-ta==0.3.14b0
-numpy==2.2.3
+pandas>=2.2.3
+pandas-ta>=0.3.14b0
+numpy>=2.2.3
 
 # Visualization
-matplotlib==3.10.1
+matplotlib>=3.10.1
 
 # RL Environment (SB3 supports both)
-gymnasium==1.0.0
+gymnasium>=1.0.0
