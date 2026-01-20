@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Training artifacts
+checkpoints/
+tensorboard_log/
+*.zip
+model_*
+trade_history_output.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Data
+*.csv
+
+# Logs
+*.log
